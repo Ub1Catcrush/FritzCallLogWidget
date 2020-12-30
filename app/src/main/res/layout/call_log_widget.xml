@@ -1,0 +1,120 @@
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:visibility="visible">
+-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:layoutMode="opticalBounds"
+        android:padding="@dimen/widget_margin"
+        android:theme="@style/ThemeOverlay.FritzCallListWidget.AppWidgetContainer"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/appwidget_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="0"
+            android:background="@color/design_default_color_secondary_variant"
+            android:contentDescription="@string/appwidget_text"
+            android:gravity="center"
+            android:paddingLeft="1dp"
+            android:paddingTop="1dp"
+            android:paddingEnd="1dp"
+            android:paddingRight="1dp"
+            android:text="@string/appwidget_text"
+            android:textColor="?attr/appWidgetTextColor"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <ListView
+            android:id="@+id/appwidget_listview"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:backgroundTint="#80000000"
+            android:backgroundTintMode="add"
+            android:verticalScrollbarPosition="right"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            tools:visibility="visible"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp">
+
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom|end"
+                android:layout_weight="0"
+                android:adjustViewBounds="true"
+                android:background="@color/design_default_color_secondary"
+                android:contentDescription="@string/refresh"
+                android:scaleType="fitCenter"
+                android:src="@drawable/settings"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/lastUpdateText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/design_default_color_secondary_variant"
+                android:paddingLeft="1dp"
+                android:paddingTop="1dp"
+                android:paddingEnd="1dp"
+                android:paddingRight="1dp"
+                android:text="@string/last_update_default_text"
+                android:textAlignment="center"
+                android:textColor="?attr/appWidgetTextColor"
+                android:textSize="14sp"
+                android:textStyle="bold|italic"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/refreshButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="0"
+                android:layout_gravity="bottom|end"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@color/design_default_color_secondary"
+                android:contentDescription="@string/refresh"
+                android:visibility="visible"
+                android:src="@drawable/refresh"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+<!--
+</RelativeLayout>
+-->

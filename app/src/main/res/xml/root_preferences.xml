@@ -1,0 +1,80 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/connection_header">
+
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:defaultValue="https"
+            android:entries="@array/connection_types"
+            android:entryValues="@array/connection_types"
+            android:key="connectiontype_preference"
+            android:title="@string/connectiontype_title" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:defaultValue="192.168.0.1"
+            android:key="connectiondomain_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/connectiondomain_title" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="51143"
+            android:key="connectionport_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/connectionport_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/account_header">
+
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="example@example.com"
+            android:key="accountname_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/accountname_title" />
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="password"
+            android:key="accountpassword_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:title="@string/accountpassword_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/refreshperiod_header">
+
+        <ListPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="15"
+            android:entries="@array/refresh_period"
+            android:entryValues="@array/refresh_period"
+            android:key="refreshperiod_preference"
+            android:title="@string/refreshperiod_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/telephonenumber_category">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="addprefixtotelephonenumber_preference"
+            android:summary="@string/addprefixtotelephonenumber_description"
+            android:title="@string/addprefixtotelephonenumber_title" />
+        <EditTextPreference
+            android:defaultValue="+49"
+            android:key="prefixfortelephonenumber_preference"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:title="@string/prefixfortelephonenumber_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Fritz CallLog Widget</string>
+    <!-- Settings Activity Title -->
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="last_update_default_text">last update 00.00.0000 00:00</string>
+    <string name="last_update_text">last update </string>
+
+    <!-- Preference Titles -->
+    <string name="connection_header">Connection</string>
+    <string name="account_header">Account</string>
+    <string name="refreshperiod_header">Refresh Period</string>
+    <string name="telephonenumber_category">Telephone Number</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="connectiontype_title">Connection type</string>
+    <string name="connectiondomain_title">Connection domain or IP</string>
+    <string name="connectionport_title">Connection port</string>
+
+    <string name="accountname_title">Account login name</string>
+    <string name="accountpassword_title">Account login password</string>
+
+    <string name="refreshperiod_title">Refresh period in minutes</string>
+
+    <string name="addprefixtotelephonenumber_title">Replace single 0 prefix</string>
+    <string name="addprefixtotelephonenumber_description">Replace single 0 prefix (not +XX or 00) in telephonenumbers with given prefix</string>
+    <string name="prefixfortelephonenumber_title">Prefix to replace 0 with</string>
+
+    <string name="about_text">This app does not offer anything apart of the "Fritz CallLog Widget" and the settings for the widget!<br/>\n<br/>\n
+You can edit the settings for the widget here.<br/>\n<br/>\n
+Errors, questions or suggestions?<br/>\n<br/>\n
+Contact: <a href= "mailto:fritzcalllog@tvcs.de">fritzcalllog@tvcs.de</a><br/>\n<br/>\n
+© 2020-2021 TVC Software
+    </string>
+
+    <string name="appwidget_text">Fritz CallLog</string>
+
+    <string name="refresh">refresh</string>
+
+    <string name="callerName">callerName</string>
+    <string name="callDate">callDate</string>
+    <string name="callType">callType</string>
+    <string name="title_activity_about">Fritz CallLog Widget</string>
+    <string name="channel_name">FritzCallLogWidget</string>
+    <string name="channel_description">Fritz CallLog Widget notification channel</string>
+    <string name="fcs_notification_title">Fritz CallLog Widget started</string>
+    <string name="fcs_notification">To hide Fritz CallLog Widget notification, click here and uncheck "Hidden Notification Service".\n\nThis notification appears due to the foreground service for the regular updates of the calllog in the background</string>
+</resources>

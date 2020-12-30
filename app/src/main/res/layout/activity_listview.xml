@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rowLayout"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+
+	<ImageView
+		android:id="@+id/callType"
+		android:contentDescription="call type"
+		android:layout_width="wrap_content"
+		android:layout_height="12sp"
+		android:layout_gravity="center_horizontal|center_vertical"
+		android:adjustViewBounds="true"
+		android:paddingStart="2dp"
+		android:paddingEnd="2dp"
+		android:scaleType="fitStart"
+		android:singleLine="true" />
+<!--
+	<TextView
+		android:id="@+id/callType"
+		android:gravity="center"
+		android:padding="3dip"
+		android:text="@string/callType"
+		android:textColor="@color/white"
+		android:textSize="12sp"
+		android:layout_weight="1"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content" />
+-->
+	<TextView
+		android:id="@+id/callDate"
+		android:layout_width="80dp"
+		android:layout_height="wrap_content"
+		android:gravity="start"
+		android:padding="3dip"
+		android:singleLine="true"
+		android:text="@string/callDate"
+		android:textColor="@color/white"
+		android:textSize="12sp"
+		android:typeface="normal" />
+
+
+	<TextView
+		android:id="@+id/callerName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="start"
+		android:padding="3dip"
+		android:singleLine="true"
+		android:text="@string/callerName"
+		android:textColor="@color/white"
+		android:textSize="12sp"
+		android:typeface="normal" />
+
+</LinearLayout>
+<!--
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_gravity="top"
+	android:stretchColumns="2">
+	<TableRow>
+
+		<TextView
+			android:id="@+id/callType"
+			android:gravity="center"
+			android:padding="3dip"
+			android:text="@string/callType"
+			android:textColor="@color/white"
+			android:textSize="12sp" />
+
+		<TextView
+			android:id="@+id/callDate"
+			android:gravity="left"
+			android:padding="3dip"
+			android:text="@string/callDate"
+			android:textColor="@color/white"
+			android:textSize="12sp" />
+
+		<TextView
+			android:id="@+id/callerName"
+			android:gravity="left"
+			android:padding="3dip"
+			android:text="@string/callerName"
+			android:textColor="@color/white"
+			android:textSize="12sp" />
+	</TableRow>
+</TableLayout>
+-->
