@@ -70,10 +70,13 @@ public class CallLogBackgroundService extends Service
     TimerTask task = new TimerTask() {
         @Override
         public void run() {
-            serviceHandler.post(() -> {
-                Message msg = serviceHandler.obtainMessage();
-                serviceHandler.sendMessage(msg);
-            });
+            if(serviceHandler != null)
+            {
+                serviceHandler.post(() -> {
+                    Message msg = serviceHandler.obtainMessage();
+                    serviceHandler.sendMessage(msg);
+                });
+            }
         }
     };
 
@@ -158,7 +161,12 @@ public class CallLogBackgroundService extends Service
                         Log.e(LOG_NAME, "getCallListAsync failed", e);
                     }
 
-                    try { countDownLatch.await(1, TimeUnit.MINUTES); } catch(Exception ignored) { }
+                    try {
+                        countDownLatch.await(2, TimeUnit.MINUTES);
+                    }
+                    catch(Exception ignored) {
+                        Log.d(LOG_NAME, "Hit countDownLatch 2 minutes");
+                    }
 
                     GetCallListResponse response = responseList.get(0);
 
@@ -172,6 +180,7 @@ public class CallLogBackgroundService extends Service
 
                         CallLogWidget.s_LastUpdate = new Date();
                         CallLogWidget.s_ForceUpdate = false;
+                        CallLogWidget.s_FailedUpdates = 0;
 
                         mgr.notifyAppWidgetViewDataChanged(allWidgetIds, R.id.appwidget_listview);
 
@@ -179,6 +188,11 @@ public class CallLogBackgroundService extends Service
                         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
                         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
                         sendBroadcast(intent);
+                    }
+                    else
+                    {
+                        Log.d(LOG_NAME, "No data retrieved");
+                        CallLogWidget.s_FailedUpdates += 1;
                     }
                 }
             } catch (Exception e){
@@ -290,14 +304,18 @@ public class CallLogBackgroundService extends Service
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        boolean screenOff = intent.getBooleanExtra("screen_off", false);
-        if (screenOff) {
-            this.screenOff = screenOff;
-        } else {
-            this.screenOff = screenOff;
+        if(intent != null && intent.hasExtra("screen_off")) {
+            boolean screenOff = intent.getBooleanExtra("screen_off", false);
+            if (screenOff) {
+                this.screenOff = screenOff;
+            } else {
+                this.screenOff = screenOff;
 
-            Message msg = serviceHandler.obtainMessage();
-            serviceHandler.sendMessage(msg);
+                if (serviceHandler != null) {
+                    Message msg = serviceHandler.obtainMessage();
+                    serviceHandler.sendMessage(msg);
+                }
+            }
         }
 
         // If we get killed, after returning from here, restart

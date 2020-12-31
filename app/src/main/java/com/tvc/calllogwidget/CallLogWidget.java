@@ -42,6 +42,7 @@ public class CallLogWidget extends AppWidgetProvider {
     public static int[] s_AppWidgetIds = null;
     public static int s_DateWidth = 0;
     public static Date s_LastUpdate = new Date(0);
+    public static int s_FailedUpdates = 0;
     public static boolean s_ForceUpdate = false;
 
     public static String REFRESH_ACTION = "com.tvc.calllogwidget.REFRESH";
@@ -295,21 +296,25 @@ public class CallLogWidget extends AppWidgetProvider {
             Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
             cal.setTime(s_LastUpdate);
             String date = s_Context.getString(R.string.last_update_text) + " " + mFormat.format(cal.get(Calendar.DAY_OF_MONTH)) + "." + mFormat.format(cal.get(Calendar.MONTH)+1) + "." + mFormat.format(cal.get(Calendar.YEAR)) + " " + mFormat.format(cal.get(Calendar.HOUR_OF_DAY)) + ":" + mFormat.format(cal.get(Calendar.MINUTE)) + ":" + mFormat.format(cal.get(Calendar.SECOND));
+            if(s_FailedUpdates > 0)
+            {
+                date += " ("+s_FailedUpdates+" FAILED)";
+            }
             s_LastViews.setTextViewText(R.id.lastUpdateText, date);
             s_LastViews.setRemoteAdapter(R.id.appwidget_listview, intent);
-
+/*
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 // only for newer versions
                 context.startForegroundService(intent);
             } else {
                 context.startService(intent);
             }
-
+*/
             int[] ids = {appWidgetId};
-            intent = new Intent(context, CallLogWidgetService.class);
-            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-            context.sendBroadcast(intent);
+            Intent intent2 = new Intent(context, CallLogWidgetService.class);
+            intent2.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent2.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+            context.sendBroadcast(intent2);
 
 //            int appWidgetIds[] = appWidgetManager.getAppWidgetIds(new ComponentName(context, CallLogWidgetListProvider.class));
 //            appWidgetManager.notifyAppWidgetViewDataChanged(ids, R.id.appwidget_listview);
