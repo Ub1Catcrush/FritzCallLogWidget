@@ -51,14 +51,19 @@ public class CallLogWidgetListProvider implements RemoteViewsService.RemoteViews
         {
             switch(call.getType())
             {
-                case INCOMMING_CALL:
+                case INCOMING_CALL:
+                case ONGOING_INCOMING_CALL:
                     rowRemoteViews.setImageViewResource(R.id.callType, R.drawable.incoming_call);
                     break;
                 case MISSED_CALL:
                     rowRemoteViews.setImageViewResource(R.id.callType, R.drawable.missed_call);
                     break;
                 case OUTGOING_CALL:
+                case ONGOING_OUTGOING_CALL:
                     rowRemoteViews.setImageViewResource(R.id.callType, R.drawable.outgoing_call);
+                    break;
+                case REJECTED_CALL:
+                    rowRemoteViews.setImageViewResource(R.id.callType, R.drawable.rejected_call);
                     break;
                 default:
                     //leave it
@@ -72,7 +77,7 @@ public class CallLogWidgetListProvider implements RemoteViewsService.RemoteViews
             rowRemoteViews.setTextViewText(R.id.callDate, date);
 
             String callername = call.getCallerName();
-            if(callername.isEmpty())
+            if(callername == null || callername.isEmpty())
             {
                 callername = call.getCallerNumber();
             }

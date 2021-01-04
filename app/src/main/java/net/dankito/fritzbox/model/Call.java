@@ -173,7 +173,7 @@ public class Call implements Serializable {
 	public static class Builder implements Serializable {
 
 		private static final long serialVersionUID = -8476721398229927890L;
-		private CallType type = CallType.UNKNOWEN;
+		private CallType type = CallType.UNKNOWN;
 		private Date date;
 		private String callerName;
 		private String callerNumber;
