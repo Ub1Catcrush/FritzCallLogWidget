@@ -23,7 +23,9 @@ import androidx.preference.PreferenceManager;
 
 import net.dankito.fritzbox.model.Call;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -32,6 +34,7 @@ import static com.tvc.calllogwidget.CallLogWidget.DIALNUMBER_ACTION;
 public class CallLogWidgetListProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context _context;
+    private static final DateFormat DATE_FORMATTER = new SimpleDateFormat("dd.MM. HH:mm");
     private int _appWidgetId;
     private int[] _appWidgetIds;
 
@@ -70,10 +73,7 @@ public class CallLogWidgetListProvider implements RemoteViewsService.RemoteViews
                     break;
             }
 
-            DecimalFormat mFormat= new DecimalFormat("00");
-            Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Paris"));
-            cal.setTime(call.getDate());
-            String date = mFormat.format(cal.get(Calendar.DAY_OF_MONTH)) + "." + mFormat.format(cal.get(Calendar.MONTH)+1) + ". " + mFormat.format(cal.get(Calendar.HOUR_OF_DAY)) + ":" + mFormat.format(cal.get(Calendar.MINUTE));
+            String date = DATE_FORMATTER.format(call.getDate());
             rowRemoteViews.setTextViewText(R.id.callDate, date);
 
             String callername = call.getCallerName();

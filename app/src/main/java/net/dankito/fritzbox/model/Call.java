@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -228,7 +229,12 @@ public class Call implements Serializable {
 		 *             occurs if string can't be parsed.
 		 */
 		public Builder date(final String date) throws ParseException {
-			return this.date(DATE_FORMATTER.parse(date));
+			Date aDate = DATE_FORMATTER.parse(date);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(aDate);
+			if(calendar.get(Calendar.YEAR) < 100)
+				calendar.add(Calendar.YEAR, 2000);
+			return this.date(calendar.getTime());
 		}
 
 		/**
